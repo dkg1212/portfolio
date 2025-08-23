@@ -3,3 +3,5 @@
 *{
   font-family:Outfit;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
