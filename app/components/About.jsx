@@ -44,11 +44,21 @@ const About = ({isDarkMode}) => {
         transition={{ duration: 0.6 ,delay:0.8}}
         className='flex-1'>
             <p className='mb-10 max-w-2xl font-Ovo'>
-                I am a web developer with a passion for creating dynamic and responsive web applications. 
-                My journey in web development began with a fascination for how websites work and the technologies 
-                that power them. Over the years, I have honed my skills in various programming languages and frameworks, 
-                allowing me to build robust and user-friendly applications.
+                Hi, I’m Dimpal Gogoi, a Computer Science student at Tezpur University, actively looking for internship and job 
+                opportunities where I can apply my skills and grow as a developer. My core interests lie in web development (MERN stack),
+                databases (MySQL), and IoT systems, along with a strong foundation in computer networks and system programming.
+                I’ve worked on projects like an Inter-Hostel Tournament Management System which is minor project project under curiculum
+                and an IoT-enabled fire alarm system, which allowed me to apply my technical knowledge to solve real-world problems. 
+                I also enjoy experimenting with programming (C++/C/Python) and learning new technologies to expand my skill set.
+                
             </p>
+
+            <p className='mb-10 max-w-2xl font-Ovo'>
+                Outside of tech, I’m passionate about playing the guitar 🎸, which fuels my creativity and keeps me balanced.
+                I’m eager to bring the same energy, curiosity, and problem-solving mindset to a professional environment.
+            </p>
+
+
 
             <motion.ul
             initial={{ opacity: 0 }}
