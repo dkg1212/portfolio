@@ -1,24 +1,51 @@
 import { assets, serviceData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
+import { motion } from 'motion/react'
 
 const Services = () => {
   return (
-    <div id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
-        <h4 className='text-center text-lg mb-2 font-Ovo'>What I offer</h4>
-        <h2 className='text-center text-5xl font-Ovo'>My Services</h2>
+    <motion.div 
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+    id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
 
-        <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
+        <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className='text-center text-lg mb-2 font-Ovo'>What I offer</motion.h4>
+
+        <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className='text-center text-5xl font-Ovo'>
+            My Services</motion.h2>
+
+        <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
             I offer a range of web development services, including front-end and back-end development,
             responsive design, and performance optimization. My goal is to create seamless user experiences
             that not only meet but exceed client expectations. Whether you need a simple website or a complex
             web application, I have the skills and expertise to bring your vision to life.
-        </p>
+        </motion.p>
 
-        <div className='grid grid-cols-4 gap-6 my-10'
+        <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        className='grid grid-cols-4 gap-6 my-10'
         style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
             {serviceData.map(({icon, title, description,link}, index) => (
-                <div key={index} className='border border-gray-400 
+
+                <motion.div 
+                whileHover={{ scale: 1.05 }}
+                key={index} className='border border-gray-400 
                 rounded-lg px-8 py-12 hover:bg-gray-100 hover:shadow-2xl cursor-pointer
                 hover:bg-lightHover hover:-translate-y-1 duration-500  dark:hover:bg-[#2a004a] 
                 dark:hover:shadow-white'>
@@ -31,11 +58,11 @@ const Services = () => {
                         Read more <Image src={assets.right_arrow} alt='arrow' className
                         ='w-4 ' />
                     </a>
-                </div>
+                </motion.div>
             ))}    
-        </div>
+        </motion.div>
 
-    </div>
+    </motion.div>
   )
 }
 
