@@ -34,7 +34,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
       <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 
       flex items-center justify-between z-50 ${isScroll ? 
-      "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-gray-800 dark:shadow-white/20" : ""}`}>
+      "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-[#11001F] dark:shadow-white/20" : ""}`}>
         <a href="#top">
             <Image src={isDarkMode ? assets.logo_dark : assets.logo} alt='' className="w-28 cursor-pointer mr-14" />
         </a>
@@ -66,7 +66,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         {/* ---------- Mobile Menu ---------- */ }
 
         <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 buttom-0 
-        w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-gray-800 dark:text-white'>
+        w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-[#2a004a] dark:text-white'>
 
             <div className='absolute top-6 right-6' onClick={closeMenu}>
                 <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer '/>
