@@ -3,84 +3,142 @@ import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+  const [isScroll, setIsScroll] = useState(false);
+  const sideMenuRef = useRef();
 
-    const[isScroll, setIsScroll] = useState(false);
+  const openMenu = () => {
+    sideMenuRef.current.style.transform = 'translateX(-16rem)';
+  };
 
-    const sideMenuRef=useRef();
+  const closeMenu = () => {
+    sideMenuRef.current.style.transform = 'translateX(16rem)';
+  };
 
-    const openMenu=()=>{
-        sideMenuRef.current.style.transform = 'translateX(-16rem)';
-    }
-
-    const closeMenu=()=>{
-        sideMenuRef.current.style.transform = 'translateX(16rem)';
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', () => {
-            if(scrollY>50){
-                setIsScroll(true);
-            }else{
-                setIsScroll(false);
-            }
-        })
-    },[]);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) setIsScroll(true);
+      else setIsScroll(false);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
-    <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
-        <Image src={assets.header_bg_color} alt='' className='w-full'/>
-    </div>
+      {/* Floating Glow Effect */}
+      <div className="fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden">
+        <Image src={assets.header_bg_color} alt="" className="w-full" />
+      </div>
 
-      <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 
-      flex items-center justify-between z-50 ${isScroll ? 
-      "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-[#11001F] dark:shadow-white/20" : ""}`}>
-        <a href="#top">
-            <Image src={isDarkMode ? assets.logo_dark : assets.logo} alt='' className="w-28 cursor-pointer mr-14" />
+      <nav
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-500 ${
+          isScroll
+            ? "bg-white/70 dark:bg-[#11001F]/70 backdrop-blur-lg shadow-lg border-b border-white/20 dark:shadow-white/20"
+            : ""
+        }`}
+      >
+        {/* Logo */}
+        <a href="#top" className="flex items-center">
+          <Image
+            src={isDarkMode ? assets.logo_dark : assets.logo}
+            alt="logo"
+            className="w-28 cursor-pointer mr-14 hover:scale-105 transition-transform duration-300"
+          />
         </a>
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3
-        ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"}`}>
-            <li><a href="#top">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#work">My Work</a></li>
-            <li><a href="#contact">Contact me</a></li>
+        {/* Desktop Nav */}
+        <ul
+          className={`hidden md:flex items-center gap-6 lg:gap-10 rounded-full px-12 py-3 transition-all duration-500 ${
+            isScroll
+              ? ""
+              : "bg-white/60 shadow-md backdrop-blur-md dark:border dark:border-white/30 dark:bg-[#1a002a]/40"
+          }`}
+        >
+          {["Home", "About", "Services", "Work", "Contact"].map((item, i) => (
+            <li key={i}>
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="relative font-medium text-gray-700 dark:text-white hover:text-pink-500 transition-colors duration-300"
+              >
+                {item}
+                {/* Sexy underline hover */}
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300 hover:w-full"></span>
+              </a>
+            </li>
+          ))}
         </ul>
-        <div className='flex items-center gap-4'>
-            <button onClick={() => setIsDarkMode(prev=>!prev)}  >
-                <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6' />
-            </button>
-             
-            <a href="#contact" className='hidden lg:flex items-center gap-3 px-10 py-2.5 border
-            border-gray-500 rounded-full ml-4 dark:border-white/50'>
-                Contact me
-                <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} alt=''
-            className='w-3' /></a>
 
-            <button className='block md:hidden ml-4' onClick={openMenu}>
-                 <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt='' className='w-6' />
-            </button>
+        {/* Right Section */}
+        <div className="flex items-center gap-4">
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            className="hover:scale-110 transition-transform duration-300"
+          >
+            <Image
+              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
+              alt="theme toggle"
+              className="w-6"
+            />
+          </button>
+
+          {/* Contact Button */}
+          <a
+            href="#contact"
+            className="hidden lg:flex items-center gap-3 px-8 py-2 border border-gray-400 
+            rounded-full ml-4 font-medium text-gray-700 dark:text-white 
+            hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-white 
+            transition-all duration-500"
+          >
+            Contact me
+            <Image
+              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
+              alt="arrow"
+              className="w-3"
+            />
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button className="block md:hidden ml-4" onClick={openMenu}>
+            <Image
+              src={isDarkMode ? assets.menu_white : assets.menu_black}
+              alt="menu"
+              className="w-7 hover:scale-110 transition-transform duration-300"
+            />
+          </button>
         </div>
 
-        {/* ---------- Mobile Menu ---------- */ }
+        {/* ---------- Mobile Menu ---------- */}
+        <ul
+          ref={sideMenuRef}
+          className="flex md:hidden flex-col gap-6 py-20 px-10 fixed top-0 right-0 
+          w-64 h-screen bg-white/90 dark:bg-[#1a002a]/95 dark:text-white 
+          shadow-2xl backdrop-blur-xl transition-transform duration-500 translate-x-full z-50"
+        >
+          {/* Close Button */}
+          <div className="absolute top-6 right-6" onClick={closeMenu}>
+            <Image
+              src={isDarkMode ? assets.close_white : assets.close_black}
+              alt="close"
+              className="w-5 cursor-pointer hover:scale-125 transition-transform duration-300"
+            />
+          </div>
 
-        <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 buttom-0 
-        w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-[#2a004a] dark:text-white'>
-
-            <div className='absolute top-6 right-6' onClick={closeMenu}>
-                <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer '/>
-            </div>
-
-            <li><a onClick={closeMenu} href="#top">Home</a></li>
-            <li><a onClick={closeMenu} href="#about">About</a></li>
-            <li><a onClick={closeMenu} href="#services">Services</a></li>
-            <li><a onClick={closeMenu} href="#my-work">My Work</a></li>
-            <li><a onClick={closeMenu} href="#contact">Contact me</a></li>
+          {["Home", "About", "Services", "Work", "Contact"].map((item, i) => (
+            <li key={i}>
+              <a
+                onClick={closeMenu}
+                href={`#${item.toLowerCase()}`}
+                className="block text-lg font-medium hover:text-pink-500 transition-colors duration-300"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

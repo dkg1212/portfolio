@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const Header = () => {
   return (
-    <div className="relative w-11/12 max-w-5xl text-center mx-auto h-screen flex flex-col
+    <div id="home" className="relative w-11/12 max-w-5xl text-center mx-auto h-screen flex flex-col
     items-center justify-center gap-6 overflow-hidden">
 
       {/* Subtle Animated Background Glow */}
