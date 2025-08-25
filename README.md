@@ -11,7 +11,6 @@
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14+-black?logo=next.js" alt="Next.js"/></a>
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/TailwindCSS-4.0-38B2AC?logo=tailwindcss&logoColor=white" alt="Tailwind"/></a>
   <a href="https://framer.com/motion"><img src="https://img.shields.io/badge/Framer%20Motion-Animation-FE3B6D?logo=framer" alt="Framer Motion"/></a>
-  <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel" alt="Vercel"/></a>
 </p>
 
 ---
