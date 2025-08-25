@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌟 Personal Portfolio Website
 
-## Getting Started
+Upcomming .....
 
-First, run the development server:
+<p align="center">
+  <a href="https://github.com/dkg1212">
+    <img src="https://img.shields.io/github/followers/dkg1212?label=Follow&style=social" alt="GitHub Followers" />
+  </a>
+  <a href="https://linkedin.com/in/your-linkedin">
+    <img src="https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=linkedin" alt="LinkedIn" />
+  </a>
+  <a href="mailto:yourmail@example.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white" alt="Email" />
+  </a>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 About the Project
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This is my **personal portfolio website** built to showcase my skills, projects, extracurricular activities, and achievements.  
+It’s designed with a **modern, responsive UI** using React, TailwindCSS, and Framer Motion.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🎨 **Modern UI/UX** with responsive design  
+- 💼 **Projects Showcase** with live demos & GitHub links  
+- 📜 **Resume Download**  
+- 🏆 **Achievements & Certifications**  
+- 🎓 **Extracurricular Activities** section  
+- 🌙 **Dark/Light Theme Support**  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack Use
 
-## Deploy on Vercel
+### **Frontend**
+<p>
+  <img src="https://skillicons.dev/icons?i=react,next,tailwind,js" />
+</p>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **Tools & Others**
+<p>
+  <img src="https://skillicons.dev/icons?i=git,github,vscode,figma" />
+</p>
+
+---
+
+## 📂 Folder Structure
+
