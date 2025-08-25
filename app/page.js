@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Work from "./components/Work";
+import Activities from "./components/Activities";
 import { useEffect } from 'react';
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
     <About isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     <Services isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     <Work isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+    <Activities isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     <Contact isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     <Footer isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
     </>

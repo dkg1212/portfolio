@@ -13,7 +13,8 @@ const Work = ({ isDarkMode }) => {
       className="w-full px-[12%] py-20 scroll-mt-20 relative"
     >
       {/* Sexy Gradient Glow Behind */}
-      <div className="absolute inset-0 -z-10 opacity-30 blur-3xl bg-gradient-to-r from-fuchsia-500/40 via-purple-400/30 to-cyan-400/40 rounded-full"></div>
+      <div className="absolute inset-0 -z-10 opacity-30 blur-3xl bg-gradient-to-r from-fuchsia-500/40
+      via-purple-400/30 to-cyan-400/40 rounded-full"></div>
 
       {/* Section Headings */}
       <motion.h4
@@ -29,7 +30,8 @@ const Work = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-5xl font-Ovo bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-5xl font-Ovo bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 
+        bg-clip-text text-transparent"
       >
         My Latest Work
       </motion.h2>
@@ -89,7 +91,8 @@ const Work = ({ isDarkMode }) => {
               <motion.div
                 whileHover={{ rotate: 15, scale: 1.2 }}
                 className="border rounded-full border-gray-700 dark:border-white w-10 h-10 flex items-center justify-center 
-                bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-400 text-white shadow-md shadow-pink-500/30 cursor-pointer"
+                bg-gradient-to-tr from-purple-500 via-pink-500 to-orange-400 text-white shadow-md shadow-pink-500/30 
+                cursor-pointer"
               >
                 <Image src={assets.send_icon} alt="send icon" className="w-5 invert dark:invert-0" />
               </motion.div>

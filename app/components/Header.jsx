@@ -30,7 +30,7 @@ const Header = () => {
         <Image 
           src={assets.profile_img} 
           alt="profile" 
-          className="rounded-full w-40 border-4 border-white/30 shadow-xl shadow-purple-500/40"
+          className="rounded-full w-20 sm:w-40 border-4 border-white/30 shadow-xl shadow-purple-500/40"
         />
         {/* Glowing ring effect */}
         <motion.div
@@ -60,7 +60,7 @@ const Header = () => {
         initial={{ y: -30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="text-3xl sm:text-6xl lg:text-[52px] font-extrabold bg-gradient-to-r 
+        className="text-xl sm:text-xl lg:text-[40px] font-extrabold bg-gradient-to-r 
         from-purple-600 via-pink-500 to-orange-400 text-transparent bg-clip-text leading-tight"
       >
         Computer Science Student @ Tezpur University  
@@ -73,7 +73,7 @@ const Header = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="max-w-2xl mx-auto font-Ovo text-gray-700 dark:text-gray-300 mt-4"
+        className="max-w-2xl mx-auto font-Ovo text-gray-700 text-xs sm:text-l lg:text-[18px] dark:text-gray-300 mt-4"
       >
         Passionate about building <span className="text-purple-500 font-semibold">real-world solutions</span>  
         with technology. Skilled in web development (MERN stack), databases, IoT systems, and  
@@ -87,11 +87,11 @@ const Header = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 1 }}
           href="#contact"
-          className="px-10 py-3 border border-transparent rounded-full 
-          bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium 
+          className="px-6 py-1.5 sm:py-3 sm:px-10 border border-transparent rounded-full 
+          bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium text-xs sm:text-l lg:text-[16px]
           shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
         >
-          Contact Me <Image src={assets.right_arrow_white} alt="arrow" className="w-4" />
+          Contact Me <Image src={assets.right_arrow_white} alt="arrow" className="w-3 sm:w-4" />
         </motion.a>
 
         <motion.a
@@ -100,11 +100,11 @@ const Header = () => {
           transition={{ duration: 0.6, delay: 1.2 }}
           href="/sample-resume.pdf"
           download
-          className="px-10 py-3 border border-gray-300 rounded-full 
-          bg-white/80 backdrop-blur-lg text-gray-900 font-medium 
+          className="px-6 py-1.5 sm:py-3 sm:px-10 border border-gray-300 rounded-full 
+          bg-white/80 backdrop-blur-lg text-gray-900 font-medium text-xs sm:text-l lg:text-[16px]
           shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
         >
-          My Resume <Image src={assets.download_icon} alt="download" className="w-4" />
+          My Resume <Image src={assets.download_icon} alt="download" className="w-3 sm:w-4" />
         </motion.a>
       </div>
     </div>
