@@ -18,7 +18,6 @@ const Contact = () => {
     })
 
     const data = await response.json()
-
     if (data.success) {
       setResult("✅ Form Submitted Successfully!")
       event.target.reset()
@@ -34,11 +33,26 @@ const Contact = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id="contact"
-      className="relative w-full px-[12%] py-20 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none"
+      className="relative w-full px-[12%] py-20 scroll-mt-20 overflow-hidden"
     >
-      {/* Gradient aura behind */}
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-40 bg-gradient-to-tr from-fuchsia-500 via-purple-500 to-cyan-400"></div>
+      {/* Animated Background Blobs */}
+      <motion.div
+        className="absolute -top-40 -left-40 w-96 h-96 bg-purple-500/30 blur-[180px] rounded-full -z-10"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -bottom-40 -right-40 w-96 h-96 bg-pink-500/30 blur-[180px] rounded-full -z-10"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
+        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-orange-400/20 blur-[220px] rounded-full -z-20"
+        animate={{ rotate: [0, 360] }}
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      />
 
+      {/* Title */}
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -76,11 +90,11 @@ const Contact = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.9 }}
         onSubmit={onSubmit}
-        className="max-w-2xl mx-auto backdrop-blur-lg bg-white/70 dark:bg-black/50 p-8 rounded-2xl shadow-lg border border-white/20 dark:border-white/30"
+        className="max-w-2xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-black/50 p-8 rounded-2xl shadow-lg border border-white/20 dark:border-white/30 relative z-10"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 mb-6">
           <motion.input
-            whileFocus={{ scale: 1.02 }}
+            whileFocus={{ scale: 1.03 }}
             type="text"
             placeholder="Enter your name"
             required
@@ -90,7 +104,7 @@ const Contact = () => {
           />
 
           <motion.input
-            whileFocus={{ scale: 1.02 }}
+            whileFocus={{ scale: 1.03 }}
             type="email"
             placeholder="Enter your email address"
             required
@@ -101,7 +115,7 @@ const Contact = () => {
         </div>
 
         <motion.textarea
-          whileFocus={{ scale: 1.01 }}
+          whileFocus={{ scale: 1.02 }}
           rows="6"
           placeholder="Enter your message"
           required
@@ -112,7 +126,7 @@ const Contact = () => {
 
         {/* Submit Button */}
         <motion.button
-          whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(236,72,153,0.6)" }}
+          whileHover={{ scale: 1.05, boxShadow: "0px 0px 25px rgba(236,72,153,0.6)" }}
           whileTap={{ scale: 0.95 }}
           type="submit"
           className="py-3 mt-6 px-10 w-max flex items-center justify-between gap-3 
@@ -124,6 +138,7 @@ const Contact = () => {
           <Image src={assets.right_arrow_white} alt="arrow" className="w-4" />
         </motion.button>
 
+        {/* Status Message */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
