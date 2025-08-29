@@ -6,6 +6,7 @@ import { motion } from 'motion/react'
 const Contact = () => {
   const [result, setResult] = useState("")
 
+
   const onSubmit = async (event) => {
     event.preventDefault()
     setResult("Sending...")
@@ -86,8 +87,8 @@ const Contact = () => {
 
       {/* Form */}
       <motion.form
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0 ,y: -30}}
+        whileInView={{ opacity: 1 ,y: 0}}
         transition={{ duration: 0.5, delay: 0.9 }}
         onSubmit={onSubmit}
         className="max-w-2xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-black/50 p-8 rounded-2xl shadow-lg border border-white/20 dark:border-white/30 relative z-10"
@@ -95,6 +96,9 @@ const Contact = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 mb-6">
           <motion.input
             whileFocus={{ scale: 1.03 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 1.1}}
             type="text"
             placeholder="Enter your name"
             required
@@ -105,6 +109,9 @@ const Contact = () => {
 
           <motion.input
             whileFocus={{ scale: 1.03 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 1.1}}
             type="email"
             placeholder="Enter your email address"
             required
@@ -116,6 +123,9 @@ const Contact = () => {
 
         <motion.textarea
           whileFocus={{ scale: 1.02 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.1 }}  
           rows="6"
           placeholder="Enter your message"
           required
