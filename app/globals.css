@@ -1,22 +1,32 @@
 @import "tailwindcss";
 
 *{
-  font-family:Outfit;
+  font-family: Outfit;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Light mode base */
+/* ── Light mode ── */
 :root {
-  --bg-primary: #f8f4ff;
-  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-primary: #f5f3ff;
 }
 
 body {
   background-color: var(--bg-primary);
 }
 
-/* Reduce motion for users who prefer it */
+/* ── Dark mode – deep space purple ── */
+.dark body,
+.dark {
+  background-color: #0d001a;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -24,7 +34,10 @@ body {
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Glowing card border on dark */
+.dark .glow-card {
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.25), 0 4px 24px rgba(168, 85, 247, 0.1);
+}
+.dark .glow-card:hover {
+  box-shadow: 0 0 0 1px rgba(236, 72, 153, 0.4), 0 8px 32px rgba(168, 85, 247, 0.25);
 }
