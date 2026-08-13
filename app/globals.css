@@ -1,32 +1,30 @@
 @import "tailwindcss";
 
-*{
+* {
   font-family: Outfit;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Light mode ── */
+/* ── Light mode base ── */
 :root {
-  --bg-primary: #f5f3ff;
+  --bg-primary: #faf7ff;
 }
 
 body {
   background-color: var(--bg-primary);
 }
 
-/* ── Dark mode – deep space purple ── */
+/* ── Dark mode ── */
 .dark body,
 .dark {
   background-color: #0d001a;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -34,10 +32,33 @@ html {
   }
 }
 
-/* Glowing card border on dark */
+/* ── Light mode card glow ── */
+.light-card {
+  box-shadow: 0 2px 20px rgba(139, 92, 246, 0.08), 0 1px 4px rgba(139, 92, 246, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.light-card:hover {
+  box-shadow: 0 8px 40px rgba(139, 92, 246, 0.18), 0 2px 8px rgba(236, 72, 153, 0.1);
+}
+
+/* ── Dark mode card glow ── */
 .dark .glow-card {
   box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.25), 0 4px 24px rgba(168, 85, 247, 0.1);
 }
 .dark .glow-card:hover {
   box-shadow: 0 0 0 1px rgba(236, 72, 153, 0.4), 0 8px 32px rgba(168, 85, 247, 0.25);
+}
+
+/* ── Decorative mesh gradient bg for light mode sections ── */
+.section-bg-light {
+  background-image:
+    radial-gradient(at 20% 30%, rgba(167, 139, 250, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(249, 168, 212, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 10%, rgba(251, 191, 136, 0.1) 0px, transparent 40%);
+}
+
+/* ── Subtle dot pattern overlay ── */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
