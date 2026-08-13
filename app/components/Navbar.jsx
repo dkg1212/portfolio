@@ -1,17 +1,10 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false)
-  const sideMenuRef = useRef()
-
-  const openMenu = () => {
-    sideMenuRef.current.style.transform = 'translateX(0)'
-  }
-  const closeMenu = () => {
-    sideMenuRef.current.style.transform = 'translateX(100%)'
-  }
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setIsScroll(window.scrollY > 50)
@@ -19,17 +12,27 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  const navItems = ['Home', 'About', 'Services', 'Work', 'Contact']
+
   return (
     <>
-      {/* Top glow — light mode only, non-interactive */}
+      {/* Light mode top glow */}
       <div className="fixed top-0 right-0 w-full -z-10 translate-y-[-80%] dark:hidden pointer-events-none">
         <Image src={assets.header_bg_color} alt="" className="w-full" priority />
       </div>
 
+      {/* ── Main navbar ── */}
       <nav
-        className={`w-full fixed top-0 left-0 right-0 px-4 sm:px-6 lg:px-10 xl:px-[8%] py-4 flex items-center justify-between z-50 transition-all duration-300 ${
+        className={`w-full fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-10 xl:px-[8%] py-4
+        flex items-center justify-between transition-all duration-300 ${
           isScroll
-            ? 'bg-white/90 dark:bg-[#0d001a]/90 backdrop-blur-lg shadow-md shadow-violet-100/60 dark:shadow-purple-900/30 border-b border-violet-100 dark:border-purple-900/40'
+            ? 'bg-white/90 dark:bg-[#0d001a]/90 backdrop-blur-lg shadow-md border-b border-violet-100 dark:border-purple-900/40'
             : 'bg-transparent'
         }`}
       >
@@ -50,7 +53,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               : 'bg-white/90 dark:bg-purple-950/60 border border-violet-200 dark:border-purple-700/40 shadow-sm backdrop-blur-md'
           }`}
         >
-          {['Home', 'About', 'Services', 'Work', 'Contact'].map((item) => (
+          {navItems.map((item) => (
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
@@ -66,27 +69,25 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           ))}
         </ul>
 
-        {/* Right side controls */}
+        {/* Right controls */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           {/* Theme toggle */}
           <button
             onClick={() => setIsDarkMode(p => !p)}
-            className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0
-            bg-violet-50 dark:bg-purple-900/40 border border-violet-200 dark:border-purple-700/40
-            hover:bg-violet-100 dark:hover:bg-purple-800/60 hover:scale-110
-            transition-all duration-300"
             aria-label="Toggle theme"
+            className="w-9 h-9 rounded-full flex items-center justify-center
+            bg-violet-50 dark:bg-purple-900/40 border border-violet-200 dark:border-purple-700/40
+            hover:bg-violet-100 dark:hover:bg-purple-800/60 hover:scale-110 transition-all duration-300"
           >
-            <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt="toggle theme" className="w-5" />
+            <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt="theme" className="w-5" />
           </button>
 
-          {/* Contact button — desktop only */}
+          {/* Contact — desktop only */}
           <a
             href="#contact"
             className="hidden lg:flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm
-            bg-gradient-to-r from-violet-600 to-pink-500 text-white flex-shrink-0
-            shadow-md shadow-violet-400/30 hover:shadow-lg hover:shadow-violet-400/50 hover:scale-105
-            transition-all duration-300"
+            bg-gradient-to-r from-violet-600 to-pink-500 text-white
+            shadow-md shadow-violet-400/30 hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             Contact me
           </a>
@@ -94,70 +95,87 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           {/* Hamburger — mobile only */}
           <button
             className="flex md:hidden items-center justify-center w-9 h-9"
-            onClick={openMenu}
+            onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
           >
-            <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt="menu" className="w-6" />
+            <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt="open menu" className="w-6" />
           </button>
         </div>
       </nav>
 
-      {/* ── Mobile slide-in menu ── */}
-      {/* Backdrop */}
+      {/* ── Mobile menu overlay ── */}
+      {/* Dark backdrop */}
       <div
-        ref={null}
-        className="md:hidden fixed inset-0 z-[60] pointer-events-none"
-        style={{ display: 'contents' }}
+        onClick={() => setMenuOpen(false)}
+        className={`md:hidden fixed inset-0 bg-black/40 z-[70] transition-opacity duration-300 ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
       />
-      <ul
-        ref={sideMenuRef}
-        className="flex md:hidden flex-col gap-5 pt-20 pb-10 px-8 fixed top-0 right-0
-        w-64 h-screen z-[60]
+
+      {/* Slide-in panel — state-driven, no ref transform tricks */}
+      <div
+        className={`md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] z-[80]
         bg-white dark:bg-[#130028]
         border-l border-violet-100 dark:border-purple-800/50
-        shadow-2xl
-        transition-transform duration-300 ease-in-out translate-x-full"
-        style={{ willChange: 'transform' }}
+        shadow-2xl flex flex-col
+        transition-transform duration-300 ease-in-out ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
       >
         {/* Rainbow top bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-pink-500 to-orange-400" />
+        <div className="h-1 w-full bg-gradient-to-r from-violet-500 via-pink-500 to-orange-400 flex-shrink-0" />
 
-        {/* Close */}
-        <button
-          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center"
-          onClick={closeMenu}
-          aria-label="Close menu"
-        >
-          <Image src={isDarkMode ? assets.close_white : assets.close_black} alt="close" className="w-5" />
-        </button>
+        {/* Header row inside menu */}
+        <div className="flex items-center justify-between px-6 py-5 border-b border-violet-100 dark:border-purple-800/40">
+          <Image
+            src={isDarkMode ? assets.logo_dark : assets.logo}
+            alt="DKG"
+            className="w-20"
+          />
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="w-8 h-8 flex items-center justify-center rounded-full
+            bg-violet-50 dark:bg-purple-900/40 border border-violet-200 dark:border-purple-700/40"
+          >
+            <Image src={isDarkMode ? assets.close_white : assets.close_black} alt="close" className="w-4" />
+          </button>
+        </div>
 
         {/* Nav links */}
-        {['Home', 'About', 'Services', 'Work', 'Contact'].map((item) => (
-          <li key={item}>
+        <nav className="flex flex-col px-6 py-6 gap-1 flex-1">
+          {navItems.map((item, i) => (
             <a
-              onClick={closeMenu}
+              key={item}
               href={`#${item.toLowerCase()}`}
-              className="block text-base font-semibold text-gray-700 dark:text-purple-200
-              hover:text-violet-600 dark:hover:text-pink-400 transition-colors py-1"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 px-3 py-3 rounded-xl text-base font-semibold
+              text-gray-700 dark:text-purple-200
+              hover:bg-violet-50 dark:hover:bg-purple-900/40
+              hover:text-violet-600 dark:hover:text-pink-400
+              transition-all duration-200"
+              style={{ animationDelay: `${i * 50}ms` }}
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 flex-shrink-0" />
               {item}
             </a>
-          </li>
-        ))}
+          ))}
+        </nav>
 
-        {/* Contact CTA inside mobile menu */}
-        <li className="mt-4">
+        {/* Contact CTA at bottom */}
+        <div className="px-6 pb-8 flex-shrink-0">
           <a
-            onClick={closeMenu}
             href="#contact"
-            className="block text-center px-6 py-2.5 rounded-full font-semibold text-sm
-            bg-gradient-to-r from-violet-600 to-pink-500 text-white
-            shadow-md shadow-violet-400/30"
+            onClick={() => setMenuOpen(false)}
+            className="block w-full text-center px-6 py-3 rounded-full font-bold text-sm
+            bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 text-white
+            shadow-lg shadow-violet-400/30 hover:shadow-violet-400/50 hover:scale-105
+            transition-all duration-300"
           >
-            Contact me
+            Contact me →
           </a>
-        </li>
-      </ul>
+        </div>
+      </div>
     </>
   )
 }
