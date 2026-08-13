@@ -5,3 +5,26 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Light mode base */
+:root {
+  --bg-primary: #f8f4ff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+}
+
+body {
+  background-color: var(--bg-primary);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
