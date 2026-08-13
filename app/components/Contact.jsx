@@ -29,7 +29,7 @@ const Contact = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       id="contact"
-      className="relative w-full px-[12%] py-20 scroll-mt-20 overflow-hidden section-bg-light dark:bg-transparent"
+      className="relative w-full px-5 sm:px-8 md:px-[10%] py-16 sm:py-20 scroll-mt-20 overflow-hidden section-bg-light dark:bg-transparent"
     >
       {/* Background blobs */}
       <div className="absolute -top-10 -left-10 w-80 h-80 bg-violet-400/20 dark:bg-purple-500/15 blur-[100px] rounded-full -z-10 pointer-events-none" />
@@ -51,7 +51,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="text-center text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
       >
         Get in Touch
       </motion.h2>
@@ -75,7 +75,7 @@ const Contact = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
         onSubmit={onSubmit}
-        className="max-w-2xl mx-auto rounded-3xl p-8
+        className="max-w-2xl mx-auto w-full rounded-2xl sm:rounded-3xl p-5 sm:p-8
         border border-violet-200 dark:border-purple-800/50
         bg-white dark:bg-[#130028]
         shadow-xl shadow-violet-200/50 dark:shadow-purple-900/30

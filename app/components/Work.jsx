@@ -50,7 +50,7 @@ const Work = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       id="work"
-      className="w-full px-[12%] py-20 scroll-mt-20 relative section-bg-light dark:bg-transparent"
+      className="w-full px-5 sm:px-8 md:px-[10%] py-16 sm:py-20 scroll-mt-20 relative section-bg-light dark:bg-transparent"
     >
       {/* Background blobs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-violet-300/15 dark:bg-fuchsia-500/8 blur-[100px] rounded-full pointer-events-none -z-10" />
@@ -72,7 +72,7 @@ const Work = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="text-center text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
       >
         My Latest Work
       </motion.h2>
@@ -82,7 +82,7 @@ const Work = () => {
       </div>
 
       {/* Cards */}
-      <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
         {workData.map((project, i) => (
           <motion.div
             key={i}

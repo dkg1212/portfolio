@@ -38,7 +38,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="logo"
-            className="w-28 cursor-pointer mr-14 hover:scale-105 transition-transform duration-300"
+            className="w-24 sm:w-28 cursor-pointer sm:mr-14 hover:scale-105 transition-transform duration-300"
           />
         </a>
 

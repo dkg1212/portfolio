@@ -7,7 +7,7 @@ const About = ({ isDarkMode }) => {
   return (
     <motion.div
       id="about"
-      className="w-full px-[12%] py-20 scroll-mt-20 relative section-bg-light dark:bg-transparent"
+      className="w-full px-5 sm:px-8 md:px-[10%] py-16 sm:py-20 scroll-mt-20 relative section-bg-light dark:bg-transparent"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -29,7 +29,7 @@ const About = ({ isDarkMode }) => {
       </motion.h4>
 
       <motion.h2
-        className="text-center text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
         initial={{ opacity: 0, y: -15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -43,20 +43,17 @@ const About = ({ isDarkMode }) => {
         <div className="h-1 w-20 rounded-full bg-gradient-to-r from-violet-500 to-pink-500" />
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center gap-16">
+      <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
         {/* Image */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative w-64 sm:w-80 flex-shrink-0"
+          className="relative w-52 sm:w-64 lg:w-80 flex-shrink-0 mx-auto lg:mx-0"
         >
           {/* Gradient frame behind image */}
           <div className="absolute -inset-2 bg-gradient-to-tr from-violet-500 via-pink-500 to-orange-400 rounded-3xl blur-lg opacity-40 dark:opacity-50" />
-          {/* Decorative corner accent */}
-          <div className="absolute -top-4 -right-4 w-24 h-24 border-t-4 border-r-4 border-violet-400 dark:border-purple-500 rounded-tr-3xl opacity-60" />
-          <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-4 border-l-4 border-pink-400 dark:border-pink-600 rounded-bl-3xl opacity-60" />
           <Image
             src={assets.user_image}
             alt="Dimpal Gogoi"
@@ -89,7 +86,7 @@ const About = ({ isDarkMode }) => {
           </p>
 
           {/* Info Cards */}
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mb-8">
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mb-8 w-full">
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <motion.li
                 whileHover={{ y: -5, scale: 1.02 }}

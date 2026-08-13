@@ -39,7 +39,7 @@ const Footer = ({ isDarkMode }) => {
         </a>
       </div>
 
-      <div className="relative z-10 sm:flex items-center justify-between border-t border-white/15 dark:border-purple-800/40 mx-10 py-6">
+      <div className="relative z-10 sm:flex items-center justify-between border-t border-white/15 dark:border-purple-800/40 mx-5 sm:mx-10 py-6 text-center sm:text-left">
         <p className="text-white/80 dark:text-gray-400 text-sm mb-4 sm:mb-0 text-center sm:text-left">
           © {new Date().getFullYear()} Dimpal Gogoi. All rights reserved.
         </p>

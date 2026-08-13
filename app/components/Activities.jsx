@@ -93,7 +93,7 @@ const Activities = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       id="extracurricular"
-      className="w-full px-[10%] py-20 scroll-mt-20 relative"
+      className="w-full px-5 sm:px-8 md:px-[8%] py-16 sm:py-20 scroll-mt-20 relative"
     >
       {/* Dot pattern — light mode */}
       <div className="absolute inset-0 dot-pattern dark:opacity-0 opacity-100 pointer-events-none -z-10" />
@@ -115,7 +115,7 @@ const Activities = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="text-center text-4xl sm:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
       >
         Activities & Certificates
       </motion.h2>
@@ -130,7 +130,7 @@ const Activities = () => {
         <div className="flex-1 h-px bg-gradient-to-r from-violet-200 to-transparent dark:from-purple-800/40" />
       </div>
 
-      <div className="grid gap-5 mb-14" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-14">
         {activities.map((item, i) => (
           <motion.div
             key={i}
@@ -160,7 +160,7 @@ const Activities = () => {
         <div className="flex-1 h-px bg-gradient-to-r from-pink-200 to-transparent dark:from-pink-800/40" />
       </div>
 
-      <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
         {certificates.map((cert, i) => (
           <motion.div
             key={i}

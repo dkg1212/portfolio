@@ -7,8 +7,8 @@ const Header = () => {
   return (
     <div
       id="home"
-      className="relative w-11/12 max-w-5xl text-center mx-auto h-screen flex flex-col
-      items-center justify-center gap-6 overflow-hidden"
+      className="relative w-full max-w-5xl text-center mx-auto px-6 sm:px-8 h-screen flex flex-col
+      items-center justify-center gap-5 sm:gap-6 overflow-hidden"
     >
       {/* Light mode: rich colourful mesh blobs */}
       <div className="absolute -top-24 -left-24 w-[420px] h-[420px] bg-violet-400/25 dark:bg-purple-600/15 blur-[110px] rounded-full pointer-events-none" />
@@ -26,7 +26,7 @@ const Header = () => {
         <Image
           src={assets.profile_img}
           alt="Dimpal Gogoi"
-          className="relative z-10 rounded-full w-24 sm:w-44 border-4 border-white dark:border-purple-900/80 shadow-2xl shadow-purple-400/30"
+          className="relative z-10 rounded-full w-28 sm:w-44 border-4 border-white dark:border-purple-900/80 shadow-2xl shadow-purple-400/30"
           priority
         />
       </motion.div>
@@ -36,7 +36,7 @@ const Header = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.25 }}
-        className="flex items-center justify-center gap-2 text-lg md:text-2xl font-Ovo text-gray-600 dark:text-gray-300"
+        className="flex items-center justify-center gap-2 text-base sm:text-lg md:text-2xl font-Ovo text-gray-600 dark:text-gray-300"
       >
         Hi! I'm
         <span className="font-bold bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 text-transparent bg-clip-text">
@@ -50,7 +50,7 @@ const Header = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="text-xl sm:text-2xl lg:text-[36px] font-extrabold leading-tight"
+        className="text-lg sm:text-2xl lg:text-[36px] font-extrabold leading-tight px-2"
       >
         <span className="bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 text-transparent bg-clip-text">
           Computer Science Student @ Tezpur University
@@ -66,7 +66,7 @@ const Header = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.55 }}
-        className="max-w-2xl mx-auto font-Ovo text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg"
+        className="max-w-2xl mx-auto font-Ovo text-gray-500 dark:text-gray-400 text-sm sm:text-base lg:text-lg px-2"
       >
         Passionate about building{' '}
         <span className="text-violet-600 dark:text-violet-400 font-semibold">real-world solutions</span> with technology.
@@ -78,14 +78,14 @@ const Header = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="flex flex-col sm:flex-row gap-4 mt-2 items-center"
+        className="flex flex-col sm:flex-row gap-3 mt-2 items-center w-full sm:w-auto px-4 sm:px-0"
       >
         <a
           href="#contact"
-          className="px-8 py-3 rounded-full bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400
-          text-white font-semibold text-sm sm:text-base
+          className="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400
+          text-white font-semibold text-sm sm:text-base text-center
           shadow-lg shadow-violet-400/40 hover:shadow-violet-500/60 hover:scale-105
-          transition-all duration-300 flex items-center gap-2"
+          transition-all duration-300 flex items-center justify-center gap-2"
         >
           Contact Me
           <Image src={assets.right_arrow_white} alt="arrow" className="w-4" />
@@ -94,12 +94,12 @@ const Header = () => {
         <a
           href="/sample-resume.pdf"
           download
-          className="px-8 py-3 rounded-full font-semibold text-sm sm:text-base
+          className="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-sm sm:text-base text-center
           border-2 border-violet-300 dark:border-purple-500/60
           text-violet-700 dark:text-purple-300
           bg-white dark:bg-purple-950/40
           hover:border-violet-500 hover:bg-violet-50 dark:hover:bg-purple-900/50 hover:shadow-md hover:shadow-violet-200
-          hover:scale-105 transition-all duration-300 flex items-center gap-2"
+          hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
         >
           My Resume
           <Image src={assets.download_icon} alt="download" className="w-4" />
