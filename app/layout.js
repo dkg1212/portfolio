@@ -9,10 +9,9 @@ const ovo = Ovo({
   subsets: ["latin"], weight: ["400"],
 });
 
-
 export const metadata = {
-  title: "Portfolio- Next.js",
-  description: "",
+  title: "Dimpal Gogoi — Portfolio",
+  description: "Computer Science Student @ Tezpur University. Developer, Learner, Innovator.",
 };
 
 export default function RootLayout({ children }) {
@@ -22,7 +21,10 @@ export default function RootLayout({ children }) {
         className={`${outfit.className} ${ovo.className} antialiased leading-8 
           overflow-x-hidden bg-[#faf7ff] text-gray-800 dark:bg-[#0d001a] dark:text-white`}
       >
-        {children}
+        {/* Extra safety wrapper — clips any stray overflow */}
+        <div className="w-full overflow-x-hidden">
+          {children}
+        </div>
       </body>
     </html>
   );
