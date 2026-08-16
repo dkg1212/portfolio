@@ -7,7 +7,7 @@ const workData = [
     description: 'B.Tech Final Year Project. Full-stack coding assessment platform with role-based auth, Monaco Editor, Judge0 API for multi-language execution, real-time proctoring via Socket.IO, and PDF/Excel report generation.',
     bgImage: '/work-1.png',
     tag: 'Final Year Project',
-    tagGradient: 'from-violet-600 to-indigo-500',
+    tagColor: 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800',
     liveLink: 'http://13.126.165.76/',
     repoLink: 'https://github.com/Anics35/NextLab',
     badge: '⭐ Featured',
@@ -17,7 +17,7 @@ const workData = [
     description: 'Secure QR attendance backend with device-binding, geolocation validation (Haversine formula) to prevent proxy attendance. REST APIs for session management with ~2–3s response time.',
     bgImage: '/work-2.png',
     tag: 'Node.js',
-    tagGradient: 'from-emerald-500 to-green-400',
+    tagColor: 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800',
     liveLink: null,
     repoLink: 'https://github.com/dkg1212/QrBasedAttendenceManager-Backend',
   },
@@ -26,7 +26,7 @@ const workData = [
     description: 'Full-stack app for managing hostel events, participants, and results with approval workflows for DSW & TUSC.',
     bgImage: '/work-3.png',
     tag: 'Full Stack',
-    tagGradient: 'from-violet-500 to-purple-400',
+    tagColor: 'bg-cyan-100 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800',
     liveLink: null,
     repoLink: 'https://github.com/dkg1212/interHostelTournaumentManagementSystem',
   },
@@ -35,7 +35,7 @@ const workData = [
     description: 'Next.js 14 task management with JWT auth, drag & drop, priority sorting, and full dark mode support.',
     bgImage: '/work-1.png',
     tag: 'Next.js',
-    tagGradient: 'from-blue-500 to-cyan-400',
+    tagColor: 'bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800',
     liveLink: 'https://taskmangerwebapp.vercel.app/',
     repoLink: 'https://github.com/dkg1212/Task-Manger-App-UI',
     backendLink: 'https://github.com/dkg1212/task-manager-app',
@@ -45,7 +45,7 @@ const workData = [
     description: 'Tinder-inspired platform for developers to connect. React frontend + Node.js/Express backend with swipe-based matching.',
     bgImage: '/work-4.png',
     tag: 'MERN',
-    tagGradient: 'from-pink-500 to-rose-400',
+    tagColor: 'bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800',
     liveLink: 'http://13.60.41.185/',
     repoLink: 'https://github.com/dkg1212/devtinder-UI',
     backendLink: 'https://github.com/dkg1212/Devtinder',
@@ -55,7 +55,7 @@ const workData = [
     description: 'Short video sharing platform with Clerk auth, Prisma ORM, and shadcn/ui components.',
     bgImage: '/work-2.png',
     tag: 'React',
-    tagGradient: 'from-cyan-500 to-teal-400',
+    tagColor: 'bg-teal-100 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800',
     liveLink: null,
     repoLink: 'https://github.com/dkg1212/YTShorts',
   },
@@ -65,98 +65,113 @@ const Work = () => {
   return (
     <section
       id="work"
-      className="w-full px-4 sm:px-6 md:px-10 lg:px-[8%] py-16 sm:py-20 scroll-mt-20 relative section-bg-light dark:bg-transparent overflow-hidden"
+      className="w-full px-4 sm:px-6 md:px-10 lg:px-[8%] py-20 sm:py-24 scroll-mt-20 relative overflow-hidden
+      bg-white dark:bg-[#0a1628]"
     >
-      <div className="absolute top-0 left-0 w-64 h-64 bg-violet-300/12 dark:bg-fuchsia-500/8 blur-[90px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-pink-300/12 dark:bg-purple-500/8 blur-[90px] rounded-full pointer-events-none -z-10" />
+      <div className="orb w-64 h-64 top-0 left-0 bg-cyan-400/8 dark:bg-cyan-500/5" />
+      <div className="orb w-64 h-64 bottom-0 right-0 bg-teal-400/8 dark:bg-teal-500/5" />
 
       {/* Heading */}
       <motion.p
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="text-center text-xs font-semibold mb-2 text-violet-500 dark:text-purple-400 uppercase tracking-[0.2em]"
+        className="text-center text-xs font-semibold mb-2 text-cyan-600 dark:text-cyan-400 uppercase tracking-[0.25em]"
       >
         My Portfolio
       </motion.p>
-
       <motion.h2
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+        className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
       >
         My Latest Work
       </motion.h2>
-
-      <div className="flex justify-center mt-3 mb-10 sm:mb-14">
-        <div className="h-1 w-16 rounded-full bg-gradient-to-r from-violet-500 to-pink-500" />
+      <div className="flex justify-center mt-3 mb-12 sm:mb-16">
+        <div className="h-0.5 w-12 rounded-full bg-cyan-500" />
       </div>
 
-      {/* Cards: 1 col mobile, 2 col sm+ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      {/* Cards grid */}
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
         {workData.map((project, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
-            whileHover={{ y: -6 }}
+            transition={{ duration: 0.35, delay: i * 0.07 }}
+            whileHover={{ y: -5 }}
             className="light-card glow-card group rounded-2xl overflow-hidden flex flex-col
-            border border-gray-200 dark:border-purple-800/50
-            bg-white dark:bg-[#130028]
-            hover:border-violet-300 dark:hover:border-pink-600/50
-            transition-all duration-300"
+            border border-slate-200 dark:border-slate-700/60
+            bg-white dark:bg-slate-900
+            hover:border-cyan-300 dark:hover:border-cyan-700
+            transition-all duration-200"
           >
             {/* Image */}
-            <div className="relative overflow-hidden h-44 sm:h-48">
+            <div className="relative overflow-hidden h-44 sm:h-48 bg-slate-100 dark:bg-slate-800">
               <div
-                className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                 style={{ backgroundImage: `url(${project.bgImage})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full text-white bg-gradient-to-r ${project.tagGradient} shadow-md`}>
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              {/* Tag */}
+              <span className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-md ${project.tagColor}`}>
                 {project.tag}
               </span>
+              {/* Featured badge */}
               {project.badge && (
-                <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-400/90 text-amber-900 shadow-md">
+                <span className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-1 rounded-md
+                bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
                   {project.badge}
                 </span>
               )}
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-4 sm:p-5 flex flex-col justify-between">
+            <div className="flex-1 p-5 flex flex-col justify-between">
               <div>
-                <h2 className="font-bold text-sm sm:text-base text-gray-800 dark:text-white mb-1.5">
+                <h2 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white mb-2 leading-snug">
                   {project.title}
                 </h2>
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3">
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
               </div>
 
-              <div className="h-px bg-gradient-to-r from-violet-200 to-pink-200 dark:from-purple-800/40 dark:to-pink-800/40 my-3 opacity-60" />
+              <div className="h-px bg-slate-100 dark:bg-slate-800 my-4" />
 
               <div className="flex flex-wrap gap-2">
                 {project.liveLink && (
                   <a href={project.liveLink} target="_blank" rel="noopener noreferrer"
-                    className="px-3 py-1.5 text-xs font-bold rounded-full bg-gradient-to-r from-violet-600 to-pink-500 text-white shadow-sm hover:scale-105 transition-all duration-200">
+                    className="px-3.5 py-1.5 text-xs font-semibold rounded-lg
+                    bg-cyan-500 hover:bg-cyan-400 text-white
+                    shadow-sm shadow-cyan-500/25 hover:scale-105 transition-all duration-200">
                     Live ↗
                   </a>
                 )}
                 {project.repoLink && (
                   <a href={project.repoLink} target="_blank" rel="noopener noreferrer"
-                    className="px-3 py-1.5 text-xs font-bold rounded-full border-2 border-violet-300 dark:border-purple-700 text-violet-700 dark:text-purple-300 bg-violet-50 dark:bg-transparent hover:bg-violet-100 hover:border-violet-500 transition-all duration-200">
+                    className="px-3.5 py-1.5 text-xs font-semibold rounded-lg
+                    border border-slate-200 dark:border-slate-700
+                    text-slate-700 dark:text-slate-300
+                    bg-slate-50 dark:bg-slate-800
+                    hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400
+                    transition-all duration-200">
                     GitHub
                   </a>
                 )}
                 {project.backendLink && (
                   <a href={project.backendLink} target="_blank" rel="noopener noreferrer"
-                    className="px-3 py-1.5 text-xs font-bold rounded-full border-2 border-pink-300 dark:border-pink-700 text-pink-700 dark:text-pink-300 bg-pink-50 dark:bg-transparent hover:bg-pink-100 hover:border-pink-500 transition-all duration-200">
+                    className="px-3.5 py-1.5 text-xs font-semibold rounded-lg
+                    border border-slate-200 dark:border-slate-700
+                    text-slate-700 dark:text-slate-300
+                    bg-slate-50 dark:bg-slate-800
+                    hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400
+                    transition-all duration-200">
                     Backend
                   </a>
                 )}

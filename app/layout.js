@@ -18,10 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.className} ${ovo.className} antialiased leading-8 
-          overflow-x-hidden bg-[#faf7ff] text-gray-800 dark:bg-[#0d001a] dark:text-white`}
+        className={`${outfit.className} ${ovo.className} antialiased leading-8
+          overflow-x-hidden bg-slate-50 text-slate-800 dark:bg-[#020817] dark:text-slate-100`}
       >
-        {/* Extra safety wrapper — clips any stray overflow */}
         <div className="w-full overflow-x-hidden">
           {children}
         </div>
