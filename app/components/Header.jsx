@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React, { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
-const ROLES = ['Full-Stack Developer', 'MERN Stack Engineer', 'Backend Developer', 'CS Student']
+const ROLES = ['Full-Stack Developer', 'MERN Stack Engineer', 'Backend Developer', 'IoT Enthusiast']
 
 const Header = () => {
   const ref = useRef(null)
