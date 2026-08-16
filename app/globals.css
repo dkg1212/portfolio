@@ -7,7 +7,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Overflow & scroll ── */
 html, body {
   overflow-x: hidden;
   max-width: 100vw;
@@ -31,60 +30,125 @@ body {
   }
 }
 
-/* ── Light mode card ── */
-.light-card {
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.04);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-.light-card:hover {
-  box-shadow: 0 4px 24px rgba(6,182,212,0.12), 0 1px 6px rgba(6,182,212,0.08);
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(6,182,212,0.45); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(6,182,212,0.7); }
 
-/* ── Dark mode card glow ── */
-.dark .glow-card {
-  box-shadow: 0 0 0 1px rgba(6,182,212,0.12), 0 4px 20px rgba(6,182,212,0.06);
-}
-.dark .glow-card:hover {
-  box-shadow: 0 0 0 1px rgba(6,182,212,0.3), 0 8px 32px rgba(6,182,212,0.15);
-}
-
-/* ── Subtle grid pattern ── */
-.grid-pattern {
-  background-image:
-    linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-.dark .grid-pattern {
-  background-image:
-    linear-gradient(rgba(148,163,184,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,163,184,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* ── Section alternating bg ── */
-.section-alt {
-  background-color: #f1f5f9;
-}
-.dark .section-alt {
-  background-color: #0f172a;
-}
-
-/* ── Noise texture overlay ── */
-.noise::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── Glow orbs ── */
+/* ── Orb ── */
 .orb {
   position: absolute;
   border-radius: 9999px;
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+}
+
+/* ── Grid pattern ── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(148,163,184,0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.065) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.dark .grid-pattern {
+  background-image:
+    linear-gradient(rgba(148,163,184,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.032) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* ── Shimmer heading ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4, #14b8a6, #0ea5e9);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Pulse glow ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(6,182,212,0); }
+  50%       { box-shadow: 0 0 0 8px rgba(6,182,212,0.15); }
+}
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Spin slow ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 14s linear infinite; }
+
+/* ── Counter ── */
+.counter-text { font-variant-numeric: tabular-nums; }
+
+/* ── Magnetic button ── */
+.magnetic { transition: transform 0.15s ease; }
+
+/* ── Card hover glow — pure CSS, no JS ── */
+.card-hover {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(6,182,212,0.12), 0 2px 8px rgba(6,182,212,0.06);
+}
+.dark .card-hover:hover {
+  box-shadow: 0 0 0 1px rgba(6,182,212,0.22), 0 12px 40px rgba(6,182,212,0.12);
+}
+
+/* ── Spotlight card — mouse-driven gradient, set via JS ── */
+.spotlight {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(6,182,212,0.06),
+    transparent 40%
+  );
+}
+.dark .spotlight {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(6,182,212,0.09),
+    transparent 40%
+  );
+}
+
+/* ── Gradient border trick ── */
+.grad-border {
+  position: relative;
+}
+.grad-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(6,182,212,0.4), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.grad-border:hover::before { opacity: 1; }
+
+/* ── Typed cursor blink ── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ── Section divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6,182,212,0.3), transparent);
 }
