@@ -1,6 +1,21 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaGoogle, FaGithub, FaUserGraduate, FaCertificate, FaHandsHelping } from 'react-icons/fa'
+import { FaGoogle, FaGithub, FaUserGraduate, FaCertificate, FaHandsHelping, FaBriefcase, FaGlobe } from 'react-icons/fa'
+
+const internships = [
+  {
+    role: 'Backend Developer Intern',
+    organization: 'VrixaaLabs (VConnect)',
+    duration: 'June 2025 – August 2025',
+    type: 'Remote',
+    description: 'Contributed to backend of VConnect v48 platform — Chat modules. Built scalable APIs with Next.js & GraphQL, integrated Auth0 for authentication and access control, and optimized chat messaging logic with the core team.',
+    links: { certificate: 'https://drive.google.com/file/d/1u-mHd64qxOFMTIKzPn8SzAMlN2gwGe2q/view' },
+    icon: <FaBriefcase className="text-xl text-pink-600 dark:text-pink-400" />,
+    iconBg: 'bg-pink-100 dark:bg-pink-900/40',
+    accent: 'hover:border-pink-400 dark:hover:border-pink-500',
+    bar: 'from-pink-500 to-pink-300',
+  },
+]
 
 const activities = [
   { role: 'Core Team Member (Programming)', organization: 'GDG Tezpur University', duration: 'Aug 2024 – Present', description: 'Organized coding workshops and hackathons. Mentored juniors in programming and web development.', icon: <FaGoogle className="text-xl text-violet-600 dark:text-violet-400" />, iconBg: 'bg-violet-100 dark:bg-violet-900/40', accent: 'hover:border-violet-400 dark:hover:border-violet-500', bar: 'from-violet-500 to-violet-300' },
@@ -12,6 +27,8 @@ const activities = [
 const certificates = [
   { title: 'Introduction to C++', issuer: 'Coding Ninjas', links: { completion: 'https://certificate.codingninjas.com/view/789daa4be35d9b11', excellence: 'https://certificate.codingninjas.com/view/15fdff9a778e534b' }, icon: <FaCertificate className="text-xl text-yellow-600 dark:text-yellow-400" />, iconBg: 'bg-yellow-100 dark:bg-yellow-900/40', accent: 'hover:border-yellow-400 dark:hover:border-yellow-500', bar: 'from-yellow-500 to-yellow-300' },
   { title: 'The Joy of Computing using Python', issuer: 'NPTEL', links: { certificate: 'https://drive.google.com/file/d/1qJyi8DRxzUOgFuCJOGPXdYFq-3_OArlm/view?usp=drive_link' }, icon: <FaCertificate className="text-xl text-orange-600 dark:text-orange-400" />, iconBg: 'bg-orange-100 dark:bg-orange-900/40', accent: 'hover:border-orange-400 dark:hover:border-orange-500', bar: 'from-orange-500 to-orange-300' },
+  { title: 'Programming in Java', issuer: 'NPTEL', links: { certificate: 'https://drive.google.com/file/d/1gnCogkuQAevKHOjuDrV1zAPF_1k9WNjw/view?usp=drive_link' }, icon: <FaCertificate className="text-xl text-red-600 dark:text-red-400" />, iconBg: 'bg-red-100 dark:bg-red-900/40', accent: 'hover:border-red-400 dark:hover:border-red-500', bar: 'from-red-500 to-red-300' },
+  { title: 'Cloud Computing and Distributed Systems', issuer: 'NPTEL', links: { certificate: 'https://drive.google.com/file/d/19lRzjfY-EaeWJsBhmrgKVlJTGdQ0W2Mw/view?usp=drive_link' }, icon: <FaCertificate className="text-xl text-sky-600 dark:text-sky-400" />, iconBg: 'bg-sky-100 dark:bg-sky-900/40', accent: 'hover:border-sky-400 dark:hover:border-sky-500', bar: 'from-sky-500 to-sky-300' },
 ]
 
 const Card = ({ children, accent, bar }) => (
@@ -54,11 +71,59 @@ const Activities = () => {
         transition={{ duration: 0.4, delay: 0.1 }}
         className="text-center text-3xl sm:text-4xl md:text-5xl font-Ovo bg-gradient-to-r from-violet-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
       >
-        Activities & Certificates
+        Activities, Internships & Certificates
       </motion.h2>
 
       <div className="flex justify-center mt-3 mb-10 sm:mb-14">
         <div className="h-1 w-16 rounded-full bg-gradient-to-r from-violet-500 to-pink-500" />
+      </div>
+
+      {/* Internships */}
+      <div className="flex items-center gap-3 mb-5">
+        <span className="text-base font-bold text-gray-700 dark:text-white whitespace-nowrap">Internships & Training</span>
+        <div className="flex-1 h-px bg-gradient-to-r from-pink-200 to-transparent dark:from-pink-800/40" />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        {internships.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.07 }}
+          >
+            <Card accent={item.accent} bar={item.bar}>
+              <div className="flex items-start gap-3">
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${item.iconBg}`}>
+                  {item.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                    <h3 className="text-sm font-bold text-gray-800 dark:text-white leading-snug">{item.role}</h3>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-300">
+                      {item.type}
+                    </span>
+                  </div>
+                  <p className="text-pink-600 dark:text-pink-400 text-xs font-semibold">{item.organization}</p>
+                  <p className="text-gray-400 text-xs mt-0.5 mb-2">{item.duration}</p>
+                  <p className="text-gray-600 dark:text-white/70 text-xs sm:text-sm leading-relaxed mb-3">{item.description}</p>
+                  {item.links && (
+                    <div className="flex flex-wrap gap-2">
+                      {Object.entries(item.links).map(([key, href]) => (
+                        <a key={key} href={href} target="_blank" rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-600 dark:text-pink-400 hover:text-violet-500 transition-colors">
+                          <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
+                          {key.charAt(0).toUpperCase() + key.slice(1)} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        ))}
       </div>
 
       {/* Activities */}

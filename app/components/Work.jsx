@@ -2,10 +2,63 @@ import React from 'react'
 import { motion } from 'motion/react'
 
 const workData = [
-  { title: 'Inter-Hostel Management System', description: 'Full-stack app for managing hostel events, participants, and results with approval workflows for DSW & TUSC.', bgImage: '/work-3.png', tag: 'Full Stack', tagGradient: 'from-violet-500 to-purple-400', liveLink: null, repoLink: 'https://github.com/dkg1212/interHostelTournaumentManagementSystem' },
-  { title: 'Task Manager App', description: 'Next.js 14 task management with JWT auth, drag & drop, priority sorting, and full dark mode support.', bgImage: '/work-1.png', tag: 'Next.js', tagGradient: 'from-blue-500 to-cyan-400', liveLink: 'https://taskmangerwebapp.vercel.app/', repoLink: 'https://github.com/dkg1212/Task-Manger-App-UI', backendLink: 'https://github.com/dkg1212/task-manager-app' },
-  { title: 'DevTinder – Tinder for Devs', description: 'Tinder-inspired platform for developers to connect. React frontend + Node.js backend.', bgImage: '/work-4.png', tag: 'MERN', tagGradient: 'from-pink-500 to-rose-400', liveLink: 'http://13.60.41.185/', repoLink: 'https://github.com/dkg1212/devtinder-UI', backendLink: 'https://github.com/dkg1212/Devtinder' },
-  { title: 'YTShorts – YouTube Shorts Clone', description: 'Short video sharing platform with Clerk auth, Prisma ORM, and shadcn/ui components.', bgImage: '/work-2.png', tag: 'React', tagGradient: 'from-cyan-500 to-teal-400', liveLink: null, repoLink: 'https://github.com/dkg1212/YTShorts' },
+  {
+    title: 'NextLab – Online Programming Exam Platform',
+    description: 'B.Tech Final Year Project. Full-stack coding assessment platform with role-based auth, Monaco Editor, Judge0 API for multi-language execution, real-time proctoring via Socket.IO, and PDF/Excel report generation.',
+    bgImage: '/work-1.png',
+    tag: 'Final Year Project',
+    tagGradient: 'from-violet-600 to-indigo-500',
+    liveLink: 'http://13.126.165.76/',
+    repoLink: 'https://github.com/Anics35/NextLab',
+    badge: '⭐ Featured',
+  },
+  {
+    title: 'QR-Based Smart Attendance Manager',
+    description: 'Secure QR attendance backend with device-binding, geolocation validation (Haversine formula) to prevent proxy attendance. REST APIs for session management with ~2–3s response time.',
+    bgImage: '/work-2.png',
+    tag: 'Node.js',
+    tagGradient: 'from-emerald-500 to-green-400',
+    liveLink: null,
+    repoLink: 'https://github.com/dkg1212/QrBasedAttendenceManager-Backend',
+  },
+  {
+    title: 'Inter-Hostel Management System',
+    description: 'Full-stack app for managing hostel events, participants, and results with approval workflows for DSW & TUSC.',
+    bgImage: '/work-3.png',
+    tag: 'Full Stack',
+    tagGradient: 'from-violet-500 to-purple-400',
+    liveLink: null,
+    repoLink: 'https://github.com/dkg1212/interHostelTournaumentManagementSystem',
+  },
+  {
+    title: 'Task Manager App',
+    description: 'Next.js 14 task management with JWT auth, drag & drop, priority sorting, and full dark mode support.',
+    bgImage: '/work-1.png',
+    tag: 'Next.js',
+    tagGradient: 'from-blue-500 to-cyan-400',
+    liveLink: 'https://taskmangerwebapp.vercel.app/',
+    repoLink: 'https://github.com/dkg1212/Task-Manger-App-UI',
+    backendLink: 'https://github.com/dkg1212/task-manager-app',
+  },
+  {
+    title: 'DevTinder – Tinder for Devs',
+    description: 'Tinder-inspired platform for developers to connect. React frontend + Node.js/Express backend with swipe-based matching.',
+    bgImage: '/work-4.png',
+    tag: 'MERN',
+    tagGradient: 'from-pink-500 to-rose-400',
+    liveLink: 'http://13.60.41.185/',
+    repoLink: 'https://github.com/dkg1212/devtinder-UI',
+    backendLink: 'https://github.com/dkg1212/Devtinder',
+  },
+  {
+    title: 'YTShorts – YouTube Shorts Clone',
+    description: 'Short video sharing platform with Clerk auth, Prisma ORM, and shadcn/ui components.',
+    bgImage: '/work-2.png',
+    tag: 'React',
+    tagGradient: 'from-cyan-500 to-teal-400',
+    liveLink: null,
+    repoLink: 'https://github.com/dkg1212/YTShorts',
+  },
 ]
 
 const Work = () => {
@@ -68,6 +121,11 @@ const Work = () => {
               <span className={`absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full text-white bg-gradient-to-r ${project.tagGradient} shadow-md`}>
                 {project.tag}
               </span>
+              {project.badge && (
+                <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-400/90 text-amber-900 shadow-md">
+                  {project.badge}
+                </span>
+              )}
             </div>
 
             {/* Content */}
